@@ -1,0 +1,1101 @@
+{
+  "id": "80672a32-9592-4763-ac06-c614e6397885",
+  "revision": 0,
+  "last_node_id": 57,
+  "last_link_id": 74,
+  "nodes": [
+    {
+      "id": 1,
+      "type": "LoadImage",
+      "pos": [
+        0,
+        0
+      ],
+      "size": [
+        360,
+        420
+      ],
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            51,
+            62
+          ]
+        },
+        {
+          "name": "MASK",
+          "type": "MASK",
+          "links": null
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "LoadImage"
+      },
+      "widgets_values": [
+        "c0ed03fd2c156198ebb1719c90f84be17346c32565fa71ad3360e54cd4626a34.jpg",
+        "image"
+      ],
+      "widgets_values_named": {
+        "image": "c0ed03fd2c156198ebb1719c90f84be17346c32565fa71ad3360e54cd4626a34.jpg",
+        "upload": "image"
+      }
+    },
+    {
+      "id": 2,
+      "type": "ImageScaleToTotalPixels",
+      "pos": [
+        1120,
+        0
+      ],
+      "size": [
+        276.4927734375,
+        106
+      ],
+      "flags": {},
+      "order": 3,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "image",
+          "type": "IMAGE",
+          "link": 63
+        }
+      ],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            4,
+            5
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "ImageScaleToTotalPixels"
+      },
+      "widgets_values": [
+        "area",
+        4,
+        1
+      ],
+      "widgets_values_named": {
+        "upscale_method": "area",
+        "megapixels": 4,
+        "resolution_steps": 1
+      }
+    },
+    {
+      "id": 5,
+      "type": "SaveImage",
+      "pos": [
+        1120,
+        640
+      ],
+      "size": [
+        360,
+        420
+      ],
+      "flags": {},
+      "order": 5,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "link": 4
+        }
+      ],
+      "outputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "links": null
+        }
+      ],
+      "properties": {},
+      "widgets_values": [
+        "film_ai_restored"
+      ],
+      "widgets_values_named": {
+        "filename_prefix": "film_ai_restored"
+      }
+    },
+    {
+      "id": 6,
+      "type": "ExposureAdjust",
+      "pos": [
+        1456.4927734375,
+        0
+      ],
+      "size": [
+        308.5915893554687,
+        154
+      ],
+      "flags": {},
+      "order": 6,
+      "mode": 4,
+      "inputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "link": 5
+        }
+      ],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            49
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "ExposureAdjust"
+      },
+      "widgets_values": [
+        2.5,
+        "sRGB",
+        "sRGB",
+        "Reinhard",
+        1
+      ],
+      "widgets_values_named": {
+        "stops": 2.5,
+        "input_mode": "sRGB",
+        "output_mode": "sRGB",
+        "tonemap": "Reinhard",
+        "tonemap_scale": 1
+      }
+    },
+    {
+      "id": 11,
+      "type": "◎ RadianceDenoise",
+      "pos": [
+        1825.084362792969,
+        0
+      ],
+      "size": [
+        280.8130859375,
+        130
+      ],
+      "flags": {},
+      "order": 7,
+      "mode": 4,
+      "inputs": [
+        {
+          "name": "image",
+          "type": "IMAGE",
+          "link": 49
+        }
+      ],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            17,
+            61
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "◎ RadianceDenoise"
+      },
+      "widgets_values": [
+        7,
+        0.08,
+        50,
+        true
+      ],
+      "widgets_values_named": {
+        "d": 7,
+        "sigmaColor": 0.08,
+        "sigmaSpace": 50,
+        "hdr_auto_sigma": true
+      },
+      "color": "#232330",
+      "bgcolor": "#0f0f14"
+    },
+    {
+      "id": 26,
+      "type": "PreviewImage",
+      "pos": [
+        1825.084362792969,
+        640
+      ],
+      "size": [
+        360,
+        420
+      ],
+      "flags": {},
+      "order": 8,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "link": 17
+        }
+      ],
+      "outputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "links": null
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "PreviewImage"
+      }
+    },
+    {
+      "id": 44,
+      "type": "LoadImage",
+      "pos": [
+        3901.958502197266,
+        640
+      ],
+      "size": [
+        360,
+        420
+      ],
+      "flags": {},
+      "order": 1,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            57
+          ]
+        },
+        {
+          "name": "MASK",
+          "type": "MASK",
+          "links": null
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "LoadImage"
+      },
+      "widgets_values": [
+        "69634afccb597994c16eb92352b1f8023ea09a1fee84eb70bd7dfc3d0dda8727.png",
+        "image"
+      ],
+      "widgets_values_named": {
+        "image": "69634afccb597994c16eb92352b1f8023ea09a1fee84eb70bd7dfc3d0dda8727.png",
+        "upload": "image"
+      }
+    },
+    {
+      "id": 48,
+      "type": "ImageCompare",
+      "pos": [
+        4351.958502197266,
+        0
+      ],
+      "size": [
+        480,
+        560
+      ],
+      "flags": {},
+      "order": 15,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "image_a",
+          "shape": 7,
+          "type": "IMAGE",
+          "link": 51
+        },
+        {
+          "name": "image_b",
+          "shape": 7,
+          "type": "IMAGE",
+          "link": 52
+        }
+      ],
+      "outputs": [],
+      "properties": {
+        "Node name for S&R": "ImageCompare"
+      },
+      "widgets_values": [],
+      "widgets_values_named": {}
+    },
+    {
+      "id": 49,
+      "type": "SaveImageAdvanced",
+      "pos": [
+        4351.958502197266,
+        660
+      ],
+      "size": [
+        360,
+        420
+      ],
+      "flags": {},
+      "order": 16,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "link": 53
+        }
+      ],
+      "outputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "links": []
+        }
+      ],
+      "properties": {},
+      "widgets_values": [
+        "film_final",
+        "png",
+        "8-bit",
+        "sRGB"
+      ],
+      "widgets_values_named": {
+        "filename_prefix": "film_final",
+        "format": "png",
+        "format.bit_depth": "8-bit",
+        "format.input_color_space": "sRGB"
+      }
+    },
+    {
+      "id": 50,
+      "type": "SaveImage",
+      "pos": [
+        3425.6338195800786,
+        640
+      ],
+      "size": [
+        360,
+        420
+      ],
+      "flags": {},
+      "order": 13,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "link": 54
+        }
+      ],
+      "outputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "links": []
+        }
+      ],
+      "properties": {},
+      "widgets_values": [
+        "film_A_graded"
+      ],
+      "widgets_values_named": {
+        "filename_prefix": "film_A_graded"
+      }
+    },
+    {
+      "id": 51,
+      "type": "LayerFilter: FilmV2",
+      "pos": [
+        3084.6221008300786,
+        0
+      ],
+      "size": [
+        281.01171875,
+        366
+      ],
+      "flags": {},
+      "order": 11,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "image",
+          "type": "IMAGE",
+          "link": 55
+        },
+        {
+          "name": "depth_map",
+          "shape": 7,
+          "type": "IMAGE",
+          "link": null
+        }
+      ],
+      "outputs": [
+        {
+          "name": "image",
+          "type": "IMAGE",
+          "links": [
+            58
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "LayerFilter: FilmV2"
+      },
+      "widgets_values": [
+        0.5,
+        0.5,
+        1,
+        0.25,
+        "fastgrain",
+        0,
+        1,
+        0,
+        0.6,
+        0.2,
+        0,
+        2.2,
+        0.9
+      ],
+      "widgets_values_named": {
+        "center_x": 0.5,
+        "center_y": 0.5,
+        "saturation": 1,
+        "vignette_intensity": 0.25,
+        "grain_method": "fastgrain",
+        "grain_power": 0,
+        "grain_scale": 1,
+        "grain_sat": 0,
+        "filmgrainer_shadows": 0.6,
+        "filmgrainer_highs": 0.2,
+        "blur_strength": 0,
+        "blur_focus_spread": 2.2,
+        "focal_depth": 0.9
+      },
+      "color": "rgba(34, 67, 111, 0.7)"
+    },
+    {
+      "id": 52,
+      "type": "ColorMatchV2",
+      "pos": [
+        3901.958502197266,
+        0
+      ],
+      "size": [
+        270,
+        126
+      ],
+      "flags": {},
+      "order": 14,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "image_target",
+          "type": "IMAGE",
+          "link": 56
+        },
+        {
+          "name": "image_ref",
+          "type": "IMAGE",
+          "link": 57
+        }
+      ],
+      "outputs": [
+        {
+          "name": "image",
+          "type": "IMAGE",
+          "links": [
+            52,
+            53
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "ColorMatchV2"
+      },
+      "widgets_values": [
+        "mkl",
+        0.4,
+        true
+      ],
+      "widgets_values_named": {
+        "method": "mkl",
+        "strength": 0.4,
+        "multithread": true
+      }
+    },
+    {
+      "id": 53,
+      "type": "RadianceFilmGrain",
+      "pos": [
+        3425.6338195800786,
+        0
+      ],
+      "size": [
+        296.3246826171875,
+        274
+      ],
+      "flags": {},
+      "order": 12,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "image",
+          "type": "IMAGE",
+          "link": 58
+        }
+      ],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            54,
+            56
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "RadianceFilmGrain"
+      },
+      "widgets_values": [
+        "Kodak Vision3 500T 5219",
+        0.6,
+        652074774731884,
+        "randomize",
+        1.2,
+        0,
+        0,
+        "Soft Light",
+        0,
+        true
+      ],
+      "widgets_values_named": {
+        "profile": "Kodak Vision3 500T 5219",
+        "intensity": 0.6,
+        "seed": 652074774731884,
+        "control_after_generate": "randomize",
+        "size": 1.2,
+        "iso": 0,
+        "halation": 0,
+        "blend_mode": "Soft Light",
+        "gate_weave": 0,
+        "use_gpu": true
+      },
+      "color": "#232330",
+      "bgcolor": "#0f0f14"
+    },
+    {
+      "id": 54,
+      "type": "RadianceGrade",
+      "pos": [
+        2686.766168212891,
+        0
+      ],
+      "size": [
+        337.8559326171875,
+        510
+      ],
+      "flags": {},
+      "order": 10,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "image",
+          "type": "IMAGE",
+          "link": 59
+        },
+        {
+          "name": "reference_image",
+          "shape": 7,
+          "type": "IMAGE",
+          "link": null
+        }
+      ],
+      "outputs": [
+        {
+          "name": "image",
+          "type": "IMAGE",
+          "links": [
+            55
+          ]
+        },
+        {
+          "name": "grade_info",
+          "type": "STRING",
+          "links": []
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "RadianceGrade"
+      },
+      "widgets_values": [
+        "None (Custom)",
+        1,
+        1,
+        "",
+        0.01,
+        0.01,
+        0.025,
+        1,
+        1,
+        1,
+        1.03,
+        1,
+        0.96,
+        0,
+        0,
+        0,
+        1,
+        0.5,
+        1
+      ],
+      "widgets_values_named": {
+        "preset": "None (Custom)",
+        "preset_strength": 1,
+        "match_strength": 1,
+        "preset_file": "",
+        "lift_r": 0.01,
+        "lift_g": 0.01,
+        "lift_b": 0.025,
+        "gamma_r": 1,
+        "gamma_g": 1,
+        "gamma_b": 1,
+        "gain_r": 1.03,
+        "gain_g": 1,
+        "gain_b": 0.96,
+        "offset_r": 0,
+        "offset_g": 0,
+        "offset_b": 0,
+        "contrast": 1,
+        "pivot": 0.5,
+        "saturation": 1
+      },
+      "color": "#232330",
+      "bgcolor": "#0f0f14"
+    },
+    {
+      "id": 55,
+      "type": "FXTD_RadianceGradeApply",
+      "pos": [
+        2285.897448730469,
+        0
+      ],
+      "size": [
+        340.86871948242185,
+        394
+      ],
+      "flags": {},
+      "order": 9,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "image",
+          "type": "IMAGE",
+          "link": 61
+        }
+      ],
+      "outputs": [
+        {
+          "name": "image",
+          "type": "IMAGE",
+          "links": [
+            59
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "FXTD_RadianceGradeApply"
+      },
+      "widgets_values": [
+        0,
+        0,
+        0.03,
+        1,
+        1,
+        1.05,
+        0.18,
+        0,
+        -0.15,
+        0.9,
+        6500,
+        0,
+        "Filmic (Cinematic)",
+        0.4,
+        "Linear (sRGB)"
+      ],
+      "widgets_values_named": {
+        "exposure": 0,
+        "offset": 0,
+        "lift": 0.03,
+        "gamma": 1,
+        "gain": 1,
+        "contrast": 1.05,
+        "pivot": 0.18,
+        "shadows": 0,
+        "highlights": -0.15,
+        "saturation": 0.9,
+        "temperature": 6500,
+        "hue_shift": 0,
+        "lut_name": "Filmic (Cinematic)",
+        "lut_intensity": 0.4,
+        "color_science": "Linear (sRGB)"
+      },
+      "color": "#232330",
+      "bgcolor": "#0f0f14"
+    },
+    {
+      "id": 56,
+      "type": "GeminiNanoBanana2V2",
+      "pos": [
+        540,
+        0
+      ],
+      "size": [
+        400,
+        418
+      ],
+      "flags": {},
+      "order": 2,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "model.images.image_1",
+          "shape": 7,
+          "type": "IMAGE",
+          "link": 62
+        },
+        {
+          "name": "model.images.image_2",
+          "shape": 7,
+          "type": "IMAGE",
+          "link": null
+        },
+        {
+          "name": "model.files",
+          "shape": 7,
+          "type": "GEMINI_INPUT_FILES",
+          "link": null
+        }
+      ],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            63,
+            64
+          ]
+        },
+        {
+          "name": "STRING",
+          "type": "STRING",
+          "links": []
+        },
+        {
+          "name": "thought_image",
+          "type": "IMAGE",
+          "links": []
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "GeminiNanoBanana2V2"
+      },
+      "widgets_values": [
+        "This night photo has been brightened but is still noisy and murky. Make it look like it was shot with correct exposure. Keep everything the same: identical composition, framing, person, hand, ring, mask shape and reflections, buildings, lit windows and the moon. Lift the shadows and midtones naturally, recover detail in the dark areas, reduce noise, keep realistic night-time colors and a dark sky. Do not add, remove or restyle anything, and do not turn it into a daytime photo.",
+        "Gemini Nano Banana 2.1",
+        "auto",
+        "4K",
+        "HIGH",
+        991550674459150,
+        "randomize",
+        "IMAGE",
+        "You are an expert image-generation engine. You must ALWAYS produce an image.\nInterpret all user input—regardless of format, intent, or abstraction—as literal visual directives for image composition.\nIf a prompt is conversational or lacks specific visual details, you must creatively invent a concrete visual scenario that depicts the concept.\nPrioritize generating the visual representation above any text, formatting, or conversational requests.",
+        0.4,
+        0.95
+      ],
+      "widgets_values_named": {
+        "prompt": "This night photo has been brightened but is still noisy and murky. Make it look like it was shot with correct exposure. Keep everything the same: identical composition, framing, person, hand, ring, mask shape and reflections, buildings, lit windows and the moon. Lift the shadows and midtones naturally, recover detail in the dark areas, reduce noise, keep realistic night-time colors and a dark sky. Do not add, remove or restyle anything, and do not turn it into a daytime photo.",
+        "model": "Gemini Nano Banana 2.1",
+        "model.aspect_ratio": "auto",
+        "model.resolution": "4K",
+        "model.thinking_level": "HIGH",
+        "seed": 991550674459150,
+        "control_after_generate": "randomize",
+        "response_modalities": "IMAGE",
+        "system_prompt": "You are an expert image-generation engine. You must ALWAYS produce an image.\nInterpret all user input—regardless of format, intent, or abstraction—as literal visual directives for image composition.\nIf a prompt is conversational or lacks specific visual details, you must creatively invent a concrete visual scenario that depicts the concept.\nPrioritize generating the visual representation above any text, formatting, or conversational requests.",
+        "temperature": 0.4,
+        "top_p": 0.95
+      },
+      "color": "#432",
+      "bgcolor": "#653"
+    },
+    {
+      "id": 57,
+      "type": "PreviewImage",
+      "pos": [
+        540,
+        640
+      ],
+      "size": [
+        360,
+        420
+      ],
+      "flags": {},
+      "order": 4,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "link": 64
+        }
+      ],
+      "outputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "links": null
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "PreviewImage"
+      }
+    }
+  ],
+  "links": [
+    [
+      4,
+      2,
+      0,
+      5,
+      0,
+      "IMAGE"
+    ],
+    [
+      5,
+      2,
+      0,
+      6,
+      0,
+      "IMAGE"
+    ],
+    [
+      17,
+      11,
+      0,
+      26,
+      0,
+      "IMAGE"
+    ],
+    [
+      49,
+      6,
+      0,
+      11,
+      0,
+      "IMAGE"
+    ],
+    [
+      51,
+      1,
+      0,
+      48,
+      0,
+      "IMAGE"
+    ],
+    [
+      52,
+      52,
+      0,
+      48,
+      1,
+      "IMAGE"
+    ],
+    [
+      54,
+      53,
+      0,
+      50,
+      0,
+      "IMAGE"
+    ],
+    [
+      55,
+      54,
+      0,
+      51,
+      0,
+      "IMAGE"
+    ],
+    [
+      56,
+      53,
+      0,
+      52,
+      0,
+      "IMAGE"
+    ],
+    [
+      57,
+      44,
+      0,
+      52,
+      1,
+      "IMAGE"
+    ],
+    [
+      58,
+      51,
+      0,
+      53,
+      0,
+      "IMAGE"
+    ],
+    [
+      59,
+      55,
+      0,
+      54,
+      0,
+      "IMAGE"
+    ],
+    [
+      61,
+      11,
+      0,
+      55,
+      0,
+      "IMAGE"
+    ],
+    [
+      63,
+      56,
+      0,
+      2,
+      0,
+      "IMAGE"
+    ],
+    [
+      64,
+      56,
+      0,
+      57,
+      0,
+      "IMAGE"
+    ],
+    [
+      53,
+      52,
+      0,
+      49,
+      0,
+      "IMAGE"
+    ],
+    [
+      62,
+      1,
+      0,
+      56,
+      0,
+      "IMAGE"
+    ]
+  ],
+  "groups": [
+    {
+      "title": "1. Input",
+      "bounding": [
+        -40,
+        -80,
+        440,
+        540
+      ],
+      "color": "#3f789e",
+      "font_size": 28,
+      "flags": {}
+    },
+    {
+      "title": "2. AI restore",
+      "bounding": [
+        500,
+        -80,
+        480,
+        1180
+      ],
+      "color": "#a1309b",
+      "font_size": 28,
+      "flags": {}
+    },
+    {
+      "title": "3. Resize / prep",
+      "bounding": [
+        1080,
+        -80,
+        1145.084362792969,
+        1180
+      ],
+      "color": "#444444",
+      "font_size": 28,
+      "flags": {}
+    },
+    {
+      "title": "4. Film look",
+      "bounding": [
+        2245.897448730469,
+        -80,
+        1579.7363708496096,
+        1180
+      ],
+      "color": "#b58b2a",
+      "font_size": 28,
+      "flags": {}
+    },
+    {
+      "title": "5. Color match",
+      "bounding": [
+        3861.958502197266,
+        -80,
+        440.0,
+        1180
+      ],
+      "color": "#3f9e6a",
+      "font_size": 28,
+      "flags": {}
+    },
+    {
+      "title": "6. Output",
+      "bounding": [
+        4311.958502197266,
+        -80,
+        560.0,
+        1200
+      ],
+      "color": "#3f789e",
+      "font_size": 28,
+      "flags": {}
+    }
+  ],
+  "config": {},
+  "extra": {
+    "ds": {
+      "scale": 0.35,
+      "offset": [
+        200,
+        600
+      ]
+    },
+    "frontendVersion": "1.58.0",
+    "VHS_KeepIntermediate": true,
+    "VHS_MetadataImage": true,
+    "VHS_latentpreview": false,
+    "VHS_latentpreviewrate": 0
+  },
+  "version": 0.4
+}

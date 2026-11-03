@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Chameleon</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header>
+  <h1>Chameleon</h1>
+  <p>Rescue dark, noisy film and phone photos. AI exposure recovery with ComfyUI, then a film look you control.</p>
+</header>
+
+<main>
+  <section class="stage">
+    <label id="drop" class="drop">
+      <input id="file" type="file" accept="image/png,image/jpeg,image/webp" hidden>
+      <span>Drop a photo here or click to upload</span>
+    </label>
+    <div id="viewer" class="viewer" hidden>
+      <img id="before" alt="Original">
+      <div id="afterWrap" class="after"><canvas id="canvas"></canvas></div>
+      <input id="split" class="splitter" type="range" min="0" max="100" value="50" aria-label="Before / after">
+      <span class="tag left">Original</span><span class="tag right">Result</span>
+    </div>
+  </section>
+
+  <aside class="panel">
+    <div class="step">
+      <h2>1. AI restore</h2>
+      <p id="aiNote" class="muted">Recovers exposure and detail with Nano Banana 2.1 on Comfy Cloud.</p>
+      <label id="codeRow" hidden>Access code <input id="code" type="password" autocomplete="off"></label>
+      <label>Resolution
+        <select id="res"><option>1K</option><option selected>2K</option><option>4K</option></select>
+      </label>
+      <button id="restore" disabled>Restore with AI</button>
+      <p id="status" class="status" role="status"></p>
+    </div>
+
+    <div class="step">
+      <h2>2. Film grain</h2>
+      <div id="grainSliders"></div>
+    </div>
+
+    <div class="step">
+      <h2>3. Color match</h2>
+      <label class="file">Color reference photo
+        <input id="ref" type="file" accept="image/*">
+      </label>
+      <div id="matchSliders"></div>
+    </div>
+
+    <div class="step">
+      <h2>4. Export</h2>
+      <button id="download" disabled>Download PNG</button>
+    </div>
+  </aside>
+</main>
+
+<footer>Built with ComfyUI · <a href="https://github.com/ksamplermagazine/chameleon.ai">Source</a> · #OpenSourceHiggsfield</footer>
+<script type="module" src="app.js"></script>
+</body>
+</html>
