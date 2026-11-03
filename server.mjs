@@ -27,8 +27,8 @@ function decodeImage(uri) {
 export async function createApp({
   port = Number(process.env.PORT || 4190),
   dataDir = path.join(root, '.runtime'),
-  apiKey = process.env.COMFY_API_KEY,
-  allowPaid = process.env.ALLOW_PAID_GENERATION === '1',
+  apiKey = (process.env.COMFY_API_KEY || '').trim(),
+  allowPaid = ['1', 'true', 'yes'].includes(String(process.env.ALLOW_PAID_GENERATION || '').trim().toLowerCase()),
   cloudFactory = key => new ComfyClient({ apiKey: key }),
   limits = createLimits({
     perIpPerHour: Number(process.env.LIMIT_PER_IP_PER_HOUR || 3),
@@ -71,7 +71,8 @@ export async function createApp({
     const send = (status, body) => { res.writeHead(status, { 'Content-Type': 'application/json' }); res.end(JSON.stringify(body)); };
     try {
       const url = new URL(req.url, 'http://local');
-      if (url.pathname === '/api/config') return send(200, { aiEnabled: !!cloud, accessCode: !!process.env.ACCESS_CODE });
+      // hasKey / paidFlag help diagnose deployment settings without revealing the key
+      if (url.pathname === '/api/config') return send(200, { aiEnabled: !!cloud, accessCode: !!process.env.ACCESS_CODE, hasKey: !!apiKey, paidFlag: allowPaid, envNames: Object.keys(process.env).filter(k => /COMFY|PAID|NODE_VERSION|ACCESS|LIMIT/.test(k)) });
 
       if (url.pathname === '/api/restore' && req.method === 'POST') {
         if (!cloud) throw fail('AI restore is disabled on this server. The film look still works in your browser.', 503);
